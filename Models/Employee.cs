@@ -13,8 +13,8 @@ namespace webapi_aspdotnet.Models
         public int Age { get; private set; }
         public Role Role { get; private set; }
         public bool Active { get; private set; } = true;
-        public DateTime CreationDate { get; private set; } = DateTime.Now.ToLocalTime();
-        public DateTime UpdateDate { get; private set; } = DateTime.Now.ToLocalTime();
+        public DateTime CreationDate { get; private set; } = DateTime.Now;
+        public DateTime UpdateDate { get; private set; } = DateTime.Now;
 
         public Employee(string name, int age, Role role)
         {

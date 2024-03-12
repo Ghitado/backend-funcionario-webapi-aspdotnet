@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using webapi_aspdotnet.DTOs;
 using webapi_aspdotnet.Models;
 using webapi_aspdotnet.Service;
 
@@ -16,43 +17,43 @@ namespace webapi_aspdotnet.Controllers
         }
 
         [HttpGet]
-        public async Task<IResult> Get()
+        public async Task<ActionResult<List<EmployeeDTO>>> Get()
         {
             var result = await _employeeService.GetEmployees();
 
-            return Results.Ok(result);
+            return Ok(result);
         }
 
         [HttpGet("{id}")]
-        public async Task<IResult> Get(Guid id)
+        public async Task<ActionResult<List<EmployeeDTO>>> Get(Guid id)
         {
             var result = await _employeeService.GetByIdEmployee(id);
 
-            return Results.Ok(result);
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<IResult> Post(Employee employee)
+        public async Task<ActionResult> Post(Employee employee)
         {
             var result = await _employeeService.CreateEmployee(employee);
 
-            return Results.Ok(result);
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IResult> Put(Employee employee)
+        public async Task<ActionResult> Put(Employee employee)
         {
             var result = await _employeeService.UpdateEmployee(employee);
 
-            return Results.Ok(result);
+            return Ok(result);
         }
 
         [HttpDelete("{id}")]
-        public async Task<IResult> Delete(Guid id)
+        public async Task<ActionResult> Delete(Guid id)
         {
             var result = await _employeeService.DeleteEmployee(id);
 
-            return Results.Ok(result);
+            return Ok(result);
         }
     }
 }
