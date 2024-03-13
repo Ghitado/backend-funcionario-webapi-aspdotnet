@@ -8,13 +8,6 @@ namespace webapi_aspdotnet.Data
     {
         public DbSet<Employee> Employees { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer("server=DESKTOP-N3HGSBN\\TITE; database=cobaia; trusted_connection=true;TrustServerCertificate=true;");
-            optionsBuilder.LogTo(Console.WriteLine, LogLevel.Information);
-            optionsBuilder.EnableSensitiveDataLogging();
-
-            base.OnConfiguring(optionsBuilder);
-        }
+        public AppDbContext(DbContextOptions options) : base(options) { }
     }
 }

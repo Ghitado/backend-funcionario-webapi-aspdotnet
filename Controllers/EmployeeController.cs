@@ -17,7 +17,7 @@ namespace webapi_aspdotnet.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<EmployeeDTO>>> Get()
+        public async Task<ActionResult<List<Employee>>> Get()
         {
             var result = await _employeeService.GetEmployees();
 
@@ -25,7 +25,7 @@ namespace webapi_aspdotnet.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<EmployeeDTO>>> Get(Guid id)
+        public async Task<ActionResult<List<Employee>>> Get(Guid id)
         {
             var result = await _employeeService.GetByIdEmployee(id);
 
@@ -40,7 +40,7 @@ namespace webapi_aspdotnet.Controllers
             return Ok(result);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ActionResult> Put(Employee employee)
         {
             var result = await _employeeService.UpdateEmployee(employee);

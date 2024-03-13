@@ -14,13 +14,12 @@ namespace webapi_aspdotnet.Service
             _context = context;
         }
 
-        public async Task<Response<List<EmployeeDTO>>> GetEmployees()
+        public async Task<Response<List<Employee>>> GetEmployees()
         {
-            Response<List<EmployeeDTO>> response = new Response<List<EmployeeDTO>>();
+            Response<List<Employee>> response = new Response<List<Employee>>();
 
             var employees = await _context.Employees
                 .Where(emp => emp.Active)
-                .Select(emp => new EmployeeDTO(emp.Name, emp.Age, emp.Role))
                 .ToListAsync();
 
             if (employees == null)
@@ -29,19 +28,18 @@ namespace webapi_aspdotnet.Service
                 return response;
             }
 
-            response.Data = new List<EmployeeDTO>(employees);
+            response.Data = new List<Employee>(employees);
             response.Message = "Employees found successfully!";
 
             return response;
         }
 
-        public async Task<Response<List<EmployeeDTO>>> GetByIdEmployee(Guid id)
+        public async Task<Response<List<Employee>>> GetByIdEmployee(Guid id)
         {
-            Response<List<EmployeeDTO>> response = new Response<List<EmployeeDTO>>();
+            Response<List<Employee>> response = new Response<List<Employee>>();
 
             var employee = await _context.Employees
                 .Where(emp => emp.Active && emp.Id == id)
-                .Select(emp => new EmployeeDTO(emp.Name, emp.Age, emp.Role))
                 .ToListAsync();
 
             if (employee == null)
@@ -50,7 +48,7 @@ namespace webapi_aspdotnet.Service
                 return response;
             }
 
-            response.Data = new List<EmployeeDTO>(employee);
+            response.Data = new List<Employee>(employee);
             response.Message = "Employee found successfully";
 
             return response;
@@ -91,9 +89,9 @@ namespace webapi_aspdotnet.Service
                 return response;
             }
 
-            updateEmployee.NewModification();
+            employee.NewModification();
 
-            await _context.AddAsync(updateEmployee);
+            _context.Employees.Update(employee);
             await _context.SaveChangesAsync();
 
             response.Data = new EmployeeDTO(employee.Name, employee.Age, employee.Role);
