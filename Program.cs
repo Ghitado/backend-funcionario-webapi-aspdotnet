@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using webapi_aspdotnet.Data;
-using webapi_aspdotnet.Service;
+using backend_employees_webapi_aspdotnet.Data;
+using backend_employees_webapi_aspdotnet.Mapper;
+using backend_employees_webapi_aspdotnet.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IMapper, Mapper>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {

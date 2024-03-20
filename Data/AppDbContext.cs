@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using webapi_aspdotnet.Models;
+using backend_employees_webapi_aspdotnet.Models;
 using System.Collections.Generic;
 
-namespace webapi_aspdotnet.Data
+namespace backend_employees_webapi_aspdotnet.Data
 {
     public class AppDbContext : DbContext
     {

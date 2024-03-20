@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using webapi_aspdotnet.DTOs;
-using webapi_aspdotnet.Models;
-using webapi_aspdotnet.Service;
+using backend_employees_backend_employees_webapi_aspdotnet.DTOs;
+using backend_employees_backend_employees_webapi_aspdotnet.Models;
+using backend_employees_backend_employees_webapi_aspdotnet.Service;
 
-namespace webapi_aspdotnet.Controllers
+namespace backend_employees_backend_employees_webapi_aspdotnet.Controllers
 {
     [ApiController]
-    [Route("employee")]
+    [Route("api/employee")]
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeService _employeeService;
@@ -25,7 +25,7 @@ namespace webapi_aspdotnet.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Employee>>> Get(Guid id)
+        public async Task<ActionResult<List<EmployeeDTO>>> Get(Guid id)
         {
             var result = await _employeeService.GetByIdEmployee(id);
 
@@ -33,7 +33,7 @@ namespace webapi_aspdotnet.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(Employee employee)
+        public async Task<ActionResult> Post(EmployeeDTO employee)
         {
             var result = await _employeeService.CreateEmployee(employee);
 
@@ -44,6 +44,14 @@ namespace webapi_aspdotnet.Controllers
         public async Task<ActionResult> Put(Employee employee)
         {
             var result = await _employeeService.UpdateEmployee(employee);
+
+            return Ok(result);
+        }
+
+        [HttpPut("inactiveEmployee")]
+        public async Task<ActionResult> Inactive(Guid id)
+        {
+            var result = await _employeeService.InactiveEmployee(id);
 
             return Ok(result);
         }

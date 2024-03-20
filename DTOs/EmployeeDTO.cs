@@ -1,19 +1,18 @@
-﻿using webapi_aspdotnet.Models.Enums;
+﻿using backend_employees_webapi_aspdotnet.Models.Enums;
 
-namespace webapi_aspdotnet.DTOs
+namespace backend_employees_webapi_aspdotnet.DTOs
 {
     public class EmployeeDTO
     {
-
-        public string name { get; private set; }
-        public int age { get; private set; }
-        public Role role { get; private set; }
+        public string Name { get; private set; }
+        public int Age { get; private set; }
+        public Role Role { get; private set; }
 
         public EmployeeDTO(string name, int age, Role role)
         {
-            this.name = name;
-            this.age = age;
-            this.role = role;
+            Name = name;
+            Age = age;
+            Role = role;
         }
     }
 }

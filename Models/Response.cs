@@ -1,4 +1,4 @@
-﻿namespace webapi_aspdotnet.Models
+﻿namespace backend_employees_webapi_aspdotnet.Models
 {
     public class Response<T>
     {

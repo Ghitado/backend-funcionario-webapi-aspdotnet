@@ -1,8 +1,8 @@
-﻿using webapi_aspdotnet.Models.Enums;
+﻿using backend_employees_webapi_aspdotnet.Models.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace webapi_aspdotnet.Models
+namespace backend_employees_webapi_aspdotnet.Models
 {
     [Table("employee")]
     public class Employee
@@ -18,11 +18,11 @@ namespace webapi_aspdotnet.Models
 
         public Employee(string name, int age, Role role)
         {
-            this.Id = Guid.NewGuid();
-            this.Name = name;
-            this.Age = age;
-            this.Role = role;
-            this.Active = true;
+            Id = Guid.NewGuid();
+            Name = name;
+            Age = age;
+            Role = role;
+            Active = true;
         }
 
         public void NewModification()
