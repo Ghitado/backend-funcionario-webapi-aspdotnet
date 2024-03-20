@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using backend_employees_backend_employees_webapi_aspdotnet.DTOs;
-using backend_employees_backend_employees_webapi_aspdotnet.Models;
-using backend_employees_backend_employees_webapi_aspdotnet.Service;
+using backend_employees_webapi_aspdotnet.DTOs;
+using backend_employees_webapi_aspdotnet.Models;
+using backend_employees_webapi_aspdotnet.Service;
 
-namespace backend_employees_backend_employees_webapi_aspdotnet.Controllers
+namespace backend_employees_webapi_aspdotnet.Controllers
 {
     [ApiController]
     [Route("api/employee")]

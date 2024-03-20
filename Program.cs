@@ -18,9 +18,16 @@ builder.Services.AddScoped<IMapper, Mapper>();
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.LogTo(Console.WriteLine, LogLevel.Information);
+    options.EnableSensitiveDataLogging();
 });
 
 var app = builder.Build();
+
+app.UseCors(policy =>
+    policy.WithOrigins("http://localhost:4200")
+          .AllowAnyHeader()
+          .AllowAnyMethod());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

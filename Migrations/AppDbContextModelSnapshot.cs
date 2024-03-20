@@ -29,7 +29,7 @@ namespace backend_employees_webapi_aspdotnet.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("Active")
-                        .HasColumnType("bit");
+                        .HasColumnType("bool");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
