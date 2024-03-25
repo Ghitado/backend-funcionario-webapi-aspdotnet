@@ -1,12 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using backend_employees_webapi_aspdotnet.Models;
-using System.Collections.Generic;
+using backend_funcionario_webapi_aspdotnet.Models;
 
-namespace backend_employees_webapi_aspdotnet.Data
+namespace backend_funcionario_webapi_aspdotnet.Data
 {
     public class AppDbContext : DbContext
     {
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Funcionario> Funcionarios { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options) { }
     }

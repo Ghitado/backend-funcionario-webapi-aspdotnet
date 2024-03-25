@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using backend_employees_webapi_aspdotnet.Data;
-using backend_employees_webapi_aspdotnet.Mapper;
-using backend_employees_webapi_aspdotnet.Service;
+using backend_funcionario_webapi_aspdotnet.Data;
+using backend_funcionario_webapi_aspdotnet.Mapper;
+using backend_funcionario_webapi_aspdotnet.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,7 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+builder.Services.AddScoped<IFuncionarioService, FuncionarioService>();
 builder.Services.AddScoped<IMapper, Mapper>();
 
 builder.Services.AddDbContext<AppDbContext>(options =>

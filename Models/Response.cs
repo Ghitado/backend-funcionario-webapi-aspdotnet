@@ -1,9 +1,9 @@
-﻿namespace backend_employees_webapi_aspdotnet.Models
+﻿namespace backend_funcionario_webapi_aspdotnet.Models
 {
     public class Response<T>
     {
         public bool Status { get; set; } = true;
-        public string Message { get; set; } = string.Empty;
-        public T? Data { get; set; }
+        public string Mensagem { get; set; } = string.Empty;
+        public T? Dados { get; set; }
     }
 }

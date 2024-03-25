@@ -1,6 +1,0 @@
-@backend_employees_webapi_aspdotnet._HostAddress = http://localhost:5017
-
-GET {{backend_employees_webapi_aspdotnet._HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

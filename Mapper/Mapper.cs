@@ -1,23 +1,23 @@
-﻿using backend_employees_webapi_aspdotnet.DTOs;
-using backend_employees_webapi_aspdotnet.Models;
+﻿using backend_funcionario_webapi_aspdotnet.DTOs;
+using backend_funcionario_webapi_aspdotnet.Models;
 
-namespace backend_employees_webapi_aspdotnet.Mapper
+namespace backend_funcionario_webapi_aspdotnet.Mapper
 {
     public class Mapper : IMapper
     {
-        public Employee NewEmployee(EmployeeDTO employee)
+        public Funcionario NovoFuncionario(FuncionarioDTO funcionario)
         {
-            return new Employee(employee.Name, employee.Age, employee.Role);
+            return new Funcionario(funcionario.Nome, funcionario.Sobrenome, funcionario.Departamento, funcionario.Turno);
         }
 
-        public Employee NewEmployee(Employee employee)
+        public Funcionario NovoFuncionario(Funcionario funcionario)
         {
-            return new Employee(employee.Name, employee.Age, employee.Role);
+            return new Funcionario(funcionario.Nome, funcionario.Sobrenome, funcionario.Departamento, funcionario.Turno);
         }
 
-        public EmployeeDTO NewEmployeeDTO(Employee employee)
+        public FuncionarioDTO NovoFuncionarioDTO(Funcionario funcionario)
         {
-            return new EmployeeDTO(employee.Name, employee.Age, employee.Role);
+            return new FuncionarioDTO(funcionario.Nome, funcionario.Sobrenome, funcionario.Departamento, funcionario.Turno);
         }
     }
 }

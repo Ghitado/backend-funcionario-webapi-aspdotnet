@@ -5,14 +5,14 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using backend_employees_webapi_aspdotnet.Data;
+using backend_funcionario_webapi_aspdotnet.Data;
 
 #nullable disable
 
-namespace backend_employees_webapi_aspdotnet.Migrations
+namespace backend_funcionario_webapi_aspdotnet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240312174325_Initial")]
+    [Migration("20240325012601_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -25,34 +25,40 @@ namespace backend_employees_webapi_aspdotnet.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("backend_employees_webapi_aspdotnet.Models.Employee", b =>
+            modelBuilder.Entity("backend_funcionario_webapi_aspdotnet.Models.Funcionario", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("Active")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("Age")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("CreationDate")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<bool>("Ativo")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("DataDeAlteracao")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<DateTime>("DataDeCriacao")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Departamento")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Role")
-                        .HasColumnType("int");
+                    b.Property<string>("Sobrenome")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdateDate")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Turno")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("employee");
+                    b.ToTable("funcionario");
                 });
 #pragma warning restore 612, 618
         }
