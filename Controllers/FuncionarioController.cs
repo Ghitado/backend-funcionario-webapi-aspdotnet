@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using backend_funcionario_webapi_aspdotnet.DTOs;
 using backend_funcionario_webapi_aspdotnet.Models;
-using backend_funcionario_webapi_aspdotnet.Service;
+using backend_funcionario_webapi_aspdotnet.Services;
 
 namespace backend_funcionario_webapi_aspdotnet.Controllers
 {
@@ -25,9 +25,9 @@ namespace backend_funcionario_webapi_aspdotnet.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<FuncionarioDTO>>> Get(int id)
+        public async Task<ActionResult<FuncionarioDTO>> Get(int id)
         {
-            var result = await _funcionarioService.GetByIdFuncionario(id);
+            var result = await _funcionarioService.GetFuncionario(id);
 
             return Ok(result);
         }
@@ -48,7 +48,7 @@ namespace backend_funcionario_webapi_aspdotnet.Controllers
             return Ok(result);
         }
 
-        [HttpPut("inativarFuncionario")]
+        [HttpPut("InativarFuncionario/{id}")]
         public async Task<ActionResult> Inactive(int id)
         {
             var result = await _funcionarioService.InativarFuncionario(id);

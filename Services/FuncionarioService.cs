@@ -5,7 +5,7 @@ using backend_funcionario_webapi_aspdotnet.Mapper;
 using backend_funcionario_webapi_aspdotnet.Models;
 using System;
 
-namespace backend_funcionario_webapi_aspdotnet.Service
+namespace backend_funcionario_webapi_aspdotnet.Services
 {
     public class FuncionarioService : IFuncionarioService
     {
@@ -23,7 +23,6 @@ namespace backend_funcionario_webapi_aspdotnet.Service
             Response<List<Funcionario>> response = new Response<List<Funcionario>>();
 
             var funcionarios = await _context.Funcionarios
-                .Where(func => func.Ativo)
                 .ToListAsync();
 
             if (funcionarios == null)
@@ -38,13 +37,12 @@ namespace backend_funcionario_webapi_aspdotnet.Service
             return response;
         }
 
-        public async Task<Response<List<Funcionario>>> GetByIdFuncionario(int id)
+        public async Task<Response<Funcionario>> GetFuncionario(int id)
         {
-            Response<List<Funcionario>> response = new Response<List<Funcionario>>();
+            Response<Funcionario> response = new Response<Funcionario>();
 
             var funcionario = await _context.Funcionarios
-                .Where(func => func.Ativo && func.Id == id)
-                .ToListAsync();
+                .FirstOrDefaultAsync(func => func.Ativo && func.Id == id);
 
             if (funcionario == null)
             {
@@ -73,13 +71,13 @@ namespace backend_funcionario_webapi_aspdotnet.Service
             return response;
         }
 
-        public async Task<Response<Funcionario>> AtualizarFuncionario(Funcionario funcionario)
+        public async Task<Response<Funcionario>> AtualizarFuncionario(Funcionario funcionarioEditado)
         {
             Response<Funcionario> response = new Response<Funcionario>();
 
             var funcionarioExiste = await _context.Funcionarios
                 .AsNoTracking()
-                .SingleOrDefaultAsync(func => func.Ativo && func.Id == funcionario.Id);
+                .SingleOrDefaultAsync(func => func.Ativo && func.Id == funcionarioEditado.Id);
 
             if (funcionarioExiste == null)
             {
@@ -87,12 +85,12 @@ namespace backend_funcionario_webapi_aspdotnet.Service
                 return response;
             }
 
-            funcionario.NovaModificacao();
+            funcionarioEditado.NovaModificacao();
 
-            _context.Funcionarios.Update(funcionario);
+            _context.Funcionarios.Update(funcionarioEditado);
             await _context.SaveChangesAsync();
 
-            response.Dados = funcionario;
+            response.Dados = funcionarioEditado;
             response.Mensagem = "Funcionario atualizado com sucesso!";
 
             return response;
@@ -114,7 +112,7 @@ namespace backend_funcionario_webapi_aspdotnet.Service
             funcionario.InativarFuncionairo();
             await _context.SaveChangesAsync();
 
-            response.Dados = _mapper.NovoFuncionario(funcionario);
+            response.Dados = funcionario;
             response.Mensagem = "Funcionario desativado com sucesso!";
 
             return response;
@@ -136,7 +134,7 @@ namespace backend_funcionario_webapi_aspdotnet.Service
             _context.Funcionarios.Remove(funcionario);
             await _context.SaveChangesAsync();
 
-            response.Dados = _mapper.NovoFuncionario(funcionario);
+            response.Dados = funcionario;
             response.Mensagem = "Funcionario deletado com sucesso!";
 
             return response;

@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using backend_funcionario_webapi_aspdotnet.Data;
 using backend_funcionario_webapi_aspdotnet.Mapper;
-using backend_funcionario_webapi_aspdotnet.Service;
+using backend_funcionario_webapi_aspdotnet.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,7 +25,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 var app = builder.Build();
 
 app.UseCors(policy =>
-    policy.WithOrigins("http://localhost:4200")
+    policy.AllowAnyOrigin()
           .AllowAnyHeader()
           .AllowAnyMethod());
 
