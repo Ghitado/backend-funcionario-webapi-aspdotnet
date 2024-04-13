@@ -12,7 +12,7 @@ namespace backend_funcionario_webapi_aspdotnet.Mapper
 
         public Funcionario NovoFuncionario(Funcionario funcionario)
         {
-            return new Funcionario(funcionario.Nome, funcionario.Sobrenome, funcionario.Departamento, funcionario.Turno);
+            return new Funcionario(funcionario.Id, funcionario.Nome, funcionario.Sobrenome, funcionario.Departamento, funcionario.Turno);
         }
 
         public FuncionarioDTO NovoFuncionarioDTO(Funcionario funcionario)

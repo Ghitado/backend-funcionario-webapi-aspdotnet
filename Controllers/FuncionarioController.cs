@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using backend_funcionario_webapi_aspdotnet.DTOs;
 using backend_funcionario_webapi_aspdotnet.Models;
 using backend_funcionario_webapi_aspdotnet.Services;
 
@@ -25,7 +24,7 @@ namespace backend_funcionario_webapi_aspdotnet.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<FuncionarioDTO>> Get(int id)
+        public async Task<ActionResult<Funcionario>> Get(int id)
         {
             var result = await _funcionarioService.GetFuncionario(id);
 
@@ -33,7 +32,7 @@ namespace backend_funcionario_webapi_aspdotnet.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(FuncionarioDTO funcionario)
+        public async Task<ActionResult<Funcionario>> Post(Funcionario funcionario)
         {
             var result = await _funcionarioService.CriarFuncionario(funcionario);
 
@@ -41,7 +40,7 @@ namespace backend_funcionario_webapi_aspdotnet.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult> Put(Funcionario funcionario)
+        public async Task<ActionResult<Funcionario>> Put(Funcionario funcionario)
         {
             var result = await _funcionarioService.AtualizarFuncionario(funcionario);
 
@@ -49,7 +48,7 @@ namespace backend_funcionario_webapi_aspdotnet.Controllers
         }
 
         [HttpPut("InativarFuncionario/{id}")]
-        public async Task<ActionResult> Inactive(int id)
+        public async Task<ActionResult<Funcionario>> Inactive(int id)
         {
             var result = await _funcionarioService.InativarFuncionario(id);
 
@@ -57,7 +56,7 @@ namespace backend_funcionario_webapi_aspdotnet.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        public async Task<ActionResult<Funcionario>> Delete(int id)
         {
             var result = await _funcionarioService.DeletarFuncionario(id);
 

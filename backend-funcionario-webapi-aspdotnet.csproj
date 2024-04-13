@@ -8,9 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTOs\**" />
+    <Compile Remove="Mapper\**" />
     <Compile Remove="NovaPasta\**" />
+    <Content Remove="DTOs\**" />
+    <Content Remove="Mapper\**" />
     <Content Remove="NovaPasta\**" />
+    <EmbeddedResource Remove="DTOs\**" />
+    <EmbeddedResource Remove="Mapper\**" />
     <EmbeddedResource Remove="NovaPasta\**" />
+    <None Remove="DTOs\**" />
+    <None Remove="Mapper\**" />
     <None Remove="NovaPasta\**" />
   </ItemGroup>
 

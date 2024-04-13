@@ -17,13 +17,8 @@ namespace backend_funcionario_webapi_aspdotnet.Models
         public DateTime DataDeCriacao { get; private set; } = DateTime.Now.ToLocalTime();
         public DateTime DataDeAlteracao { get; private set; } = DateTime.Now.ToLocalTime();
 
-        public Funcionario(string nome, string sobrenome, Departamento departamento, Turno turno)
+        public Funcionario()
         {
-            Nome = nome;
-            Sobrenome = sobrenome;
-            Departamento = departamento;
-            Turno = turno;
-            Ativo = true;
         }
 
         public void NovaModificacao()
